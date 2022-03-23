@@ -1,5 +1,5 @@
-import Dimension from '../src/Dimension'
-import Item from '../src/Item'
+import Dimension from '../../src/domain/entity/Dimension'
+import Item from '../../src/domain/entity/Item'
 
 test('Deve criar um item com dimensões', function () {
   const item = new Item(1, 'Instrumento Musical', 'Pandeiro', 120, new Dimension(100, 30, 10))
