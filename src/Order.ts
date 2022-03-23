@@ -9,11 +9,13 @@ export default class Order {
   orderItems: OrderItem[]
   coupon: Coupon | undefined
   private freight: Freight
+  code: string
 
   constructor(cpf: string, readonly issueDate: Date = new Date()) {
     this.cpf = new Cpf(cpf)
     this.orderItems = []
     this.freight = new Freight()
+    this.code = `${issueDate.getFullYear()}${String(1).padStart(8, '0')}`
   }
 
   getTotal() {

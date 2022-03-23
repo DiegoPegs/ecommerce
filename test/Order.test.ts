@@ -50,3 +50,10 @@ test('Deve criar um pedido com 3 itens com cupom de desconto expirado', function
   order.addCoupon(coupon)
   expect(order.getTotal()).toBe(6420)
 })
+
+test('Deve criar um pedido e gerar um código', function () {
+  const order = new Order('331.137.018-05', new Date('2022-03-01T10:00:00'))
+  order.addItem(new Item(1, 'Instrumento Musical', 'Guitarra', 1000, new Dimension(100, 30, 10), 3), 1)
+
+  expect(order.code).toBe('202200000001')
+})
