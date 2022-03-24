@@ -3,7 +3,7 @@ import CouponRepositoryMemory from '../../src/infra/repository/memory/CouponRepo
 import ItemRepositoryMemory from '../../src/infra/repository/memory/ItemRepositoryMemory'
 import OrderRepositoryMemory from '../../src/infra/repository/memory/OrderRepositoryMemory'
 
-test('Deve criar um pedido', function () {
+test('Deve criar um pedido', async function () {
   const itemRepository = new ItemRepositoryMemory()
   const couponRepository = new CouponRepositoryMemory()
   const orderRepository = new OrderRepositoryMemory()
@@ -18,11 +18,11 @@ test('Deve criar um pedido', function () {
     ],
     coupon: 'VALE20'
   }
-  const output = placeOrder.execute(placeOrderInput)
+  const output = await placeOrder.execute(placeOrderInput)
   expect(output.total).toBe(4872)
 })
 
-test('Deve criar um pedido e gerar um código', function () {
+test('Deve criar um pedido e gerar um código', async function () {
   const itemRepository = new ItemRepositoryMemory()
   const couponRepository = new CouponRepositoryMemory()
   const orderRepository = new OrderRepositoryMemory()
@@ -38,7 +38,7 @@ test('Deve criar um pedido e gerar um código', function () {
     coupon: 'VALE20',
     issueDate: new Date('2021-03-01')
   }
-  placeOrder.execute(placeOrderInput)
-  const output = placeOrder.execute(placeOrderInput)
+  await placeOrder.execute(placeOrderInput)
+  const output = await placeOrder.execute(placeOrderInput)
   expect(output.code).toBe('202100000002')
 })

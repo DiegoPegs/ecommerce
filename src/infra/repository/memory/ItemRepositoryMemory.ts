@@ -12,7 +12,7 @@ export default class ItemRepositoryMemory implements ItemRepository {
     ]
   }
 
-  getById(idItem: number) {
+  async getById(idItem: number) {
     const item = this.items.find((item) => item.idItem === idItem)
     return item
   }
