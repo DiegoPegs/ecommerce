@@ -13,7 +13,8 @@ export default class PlaceOrder {
   ) {}
 
   execute(input: PlaceOrderInput): PlaceOrderOutput {
-    const order = new Order(input.cpf)
+    const sequence = this.orderRepository.count()
+    const order = new Order(input.cpf, input.issueDate, sequence + 1)
 
     for (const orderItem of input.orderItems) {
       const item = this.itemRepository.getById(orderItem.idItem)
@@ -26,7 +27,7 @@ export default class PlaceOrder {
     }
     const total = order.getTotal()
     this.orderRepository.save(order)
-    const output = new PlaceOrderOutput(total)
+    const output = new PlaceOrderOutput(total, order.code.value)
 
     return output
   }
