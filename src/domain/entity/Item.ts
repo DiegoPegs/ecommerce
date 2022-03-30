@@ -16,7 +16,7 @@ export default class Item {
   }
 
   getDensity() {
-    if (this.dimension && this.weigth) {
+    if (this.weigth && this.dimension) {
       return this.weigth / this.dimension.getVolume()
     }
     return 0

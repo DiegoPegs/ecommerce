@@ -13,5 +13,5 @@ test('Deve simular um frete', async function () {
   }
 
   const output = await simulateFreight.execute(input)
-  expect(output.total).toBe(260)
+  expect(output.total).toBe(280)
 })

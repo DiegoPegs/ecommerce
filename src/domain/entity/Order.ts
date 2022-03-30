@@ -22,7 +22,8 @@ export default class Order {
   getTotal() {
     let total = this.orderItems.reduce((previous, current) => previous + current.getTotal(), 0)
     if (this.coupon) total -= this.coupon.calculateDiscount(total)
-    total += this.freight.getTotal()
+    const freight = this.freight.getTotal()
+    total += freight
     return total
   }
 
